@@ -1,0 +1,181 @@
+.select-with-img {
+  display: none;
+}
+
+.lang-select {
+  position: relative;
+}
+
+#a {
+  padding-left: 0px;
+  img {
+    width: 12px;
+  }
+  li {
+    padding: 5px 37px 5px 17px;
+    list-style: none;
+    cursor: pointer;
+  }
+  li:hover {
+    background-color: #f4f3f3;
+  }
+  li img {
+    margin: 5px 0;
+  }
+  li span,
+  .btn-select li span {
+    margin-left: 30px;
+  }
+}
+
+#a img,
+.btn-select img {
+  width: 26px;
+}
+
+/* item list */
+
+.b {
+  position: absolute;
+  display: none;
+  width: 80px;
+  top: 37px;
+  background-color: #fcfcfc;
+  border: 2px solid #f2f2f2;
+  border-radius: 2px;
+  border-top: none;
+}
+
+.open {
+  display: show !important;
+}
+
+.btn-select {
+  width: 80px;
+  height: 40px;
+  background-color: #fcfcfc;
+  border: 2px solid #f2f2f2;
+  border-radius: 2px;
+}
+.btn-select li {
+  list-style: none;
+  float: left;
+  padding-left: 17px;
+  ::after {
+    content: url(/img/summary.svg);
+    margin-left: 18px;
+  }
+}
+//-------------------------this bg only for downloasd files to dist by webpack
+#ukr {
+  background-image: url(../assets/img/flag-ukr.png);
+}
+
+#eg {
+  background-image: url(../assets/img/flag-eg.png);
+}
+
+.btn-select:focus {
+  border-left: 2px solid #2a74db;
+}
+
+//-------------------------//this bg only for downloasd files to dist by webpack
+
+.custom-select {
+  margin-bottom: 25px;
+  position: relative;
+  font-family: Arial;
+  border-radius: 2px;
+  border: 2px solid #f2f2f2;
+  &:focus {
+    border-left: 2px solid #2a74db;
+  }
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: #fcfcfc;
+  border-bottom: none;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: url(/img/summary.svg);
+  top: 14px;
+  right: 10px;
+}
+
+.select-items div,
+.select-selected {
+  padding: 11px 13px 13px;
+  cursor: pointer;
+  user-select: none;
+  min-height: 38px;
+}
+
+.select-items {
+  width: 100%;
+  position: absolute;
+  background-color: #fcfcfc;
+  top: 100%;
+  left: -2px;
+  right: 0;
+  z-index: 99;
+  border: 2px solid #f2f2f2;
+  border-radius: 2px;
+  border-top: none;
+  box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: #f4f3f3;
+}
+
+.result-block {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f5f7fa;
+    border-radius: 50px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #e0e6f0;
+    border-radius: 50px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+.calendar-icon {
+  position: relative;
+  &::before {
+    color: transparent;
+    background: none;
+    display: block;
+    font-family: 'FontAwesome';
+    content: url(../assets/img/date-calendar.svg);
+    width: 16px;
+    position: absolute;
+    top: 0px;
+    left: 14px;
+    color: #999;
+  }
+}

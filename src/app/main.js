@@ -1,10 +1,8 @@
-import "../sass/main.sass";
-
-import { bro } from "./bro";
+import '../sass/main.scss';
+import './scripts';
 
 const init = () => {
-  document.querySelector("#greeting").innerHTML = bro("Hi", "Duck");
-  console.log(bro("Hi", "Duck"));
+  console.log('completed');
 };
 
 export { init };

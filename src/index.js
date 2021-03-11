@@ -1,5 +1,5 @@
-"use strict";
+'use strict';
 
-import { init } from "./app/main";
+import { init } from './app/main';
 
 init();

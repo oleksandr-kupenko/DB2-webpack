@@ -1,0 +1,31 @@
+.sidebar {
+  grid-area: side;
+  background: #01134e;
+}
+
+.wrapper-column {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sidebar__logo {
+  width: 28px;
+  height: 28px;
+  margin: 18px auto 86px;
+}
+
+.sidebar-menu__item {
+  padding: 24px;
+  margin-bottom: 13px;
+
+  img {
+    width: 18px;
+  }
+  opacity: 0.38;
+}
+
+.sidebar-menu__item_active {
+  border-left: 4px solid #0ad69c;
+  opacity: 1;
+}

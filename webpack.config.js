@@ -1,15 +1,47 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const pages = [
+  'index',
+  'base',
+  'enter-email',
+  'header',
+  'base',
+  'almost-ready',
+  'profile-personal',
+  'resset-pass',
+  'sign-in',
+  'sign-up',
+  'sign-up-2',
+  'sign-up-3',
+  'sign-up-4',
+  'sign-up-5',
+  'sign-up-6',
+  'profile-1',
+  'profile-2',
+  'search-1',
+  'search-2',
+  'admin',
+];
+const pagesForPlugin = [];
+pages.forEach((page) => {
+  pagesForPlugin.push(
+    new HtmlWebpackPlugin({
+      filename: `${page}.html`,
+      template: `./src/templates/${page}.html`,
+    })
+  );
+});
 
 module.exports = {
   entry: {
-    app: "./src/index.js",
+    app: './src/index.js',
   },
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/",
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -18,11 +50,11 @@ module.exports = {
         // exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             query: {
               presets: [
                 [
-                  "@babel/preset-env",
+                  '@babel/preset-env',
                   // {
                   //   targets: {
                   //     esmodules: true
@@ -35,34 +67,33 @@ module.exports = {
         ],
       },
       {
-        test: /\.sass$/,
-        // use standalone css file
-        use: ExtractTextPlugin.extract({
-          use: [{ loader: "css-loader" }, { loader: "sass-loader" }],
-          fallback: "style-loader",
-        }),
-        // use injected css inside js bundle
-        // use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      {
-        test: /\.pug$/,
+        test: /\.html$/,
         use: [
+          'html-loader',
           {
-            loader: "pug-loader",
+            loader: 'nunjucks-html-loader',
             options: {
-              pretty: true,
+              searchPaths: ['./src/templates'],
             },
           },
         ],
       },
       {
-        test: /\.njk$/,
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [{ loader: 'css-loader' }, { loader: 'sass-loader' }],
+          fallback: 'style-loader',
+        }),
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        // use: ['file?name=assets/[name].[hash].[ext]']
         use: [
-          "html-loader",
           {
-            loader: "nunjucks-html-loader",
+            loader: 'file-loader',
             options: {
-              searchPaths: ["./src/templates"],
+              name: 'img/[name].[ext]', // Not sure if this actually works like it did in Webpack 1
+              esModule: false,
             },
           },
         ],
@@ -70,22 +101,5 @@ module.exports = {
     ],
   },
 
-  plugins: [
-    new ExtractTextPlugin("main.css"),
-    // new MiniCssExtractPlugin({
-    //   filename: 'css/[name].css',
-    // }),
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./src/templates/index.pug",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "another.html",
-      template: "./src/templates/another.pug",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "more.html",
-      template: "./src/templates/more.njk",
-    }),
-  ],
+  plugins: [new ExtractTextPlugin('css/main.css'), ...pagesForPlugin],
 };
