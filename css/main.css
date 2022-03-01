@@ -5,9 +5,50 @@
   padding-left: 20px; }
   .sidebar-options__input {
     border: 1px solid #e3e8fb;
-    width: 341px;
+    max-width: 341px;
+    width: 100%;
     height: 54px;
-    background: #f3f5fa; }
+    padding-left: 47px;
+    background-color: #f3f5fa;
+    background-image: url("http://www.clker.com/cliparts/b/Y/9/V/W/6/google-map-pointer-grey-hi.png");
+    background-repeat: no-repeat;
+    background-size: 14px 18px;
+    background-position: 18px;
+    color: #15245a;
+    font-size: 18px; }
+    .sidebar-options__input:focus {
+      outline: none; }
+    .sidebar-options__input::placeholder {
+      color: #15245a;
+      font-size: 18px; }
+  .sidebar-options .checkboxes .checkbox {
+    display: flex;
+    align-items: center; }
+    .sidebar-options .checkboxes .checkbox input {
+      display: none; }
+      .sidebar-options .checkboxes .checkbox input:checked + label:after {
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-image: url(../assets/img/marker.svg);
+        background-repeat: no-repeat; }
+    .sidebar-options .checkboxes .checkbox label {
+      position: relative;
+      cursor: pointer; }
+      .sidebar-options .checkboxes .checkbox label::before {
+        content: '';
+        -webkit-appearance: none;
+        background-color: transparent;
+        border: 1px solid #368952;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+        padding: 10px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-right: 5px; }
 
 html,
 body {
@@ -33,7 +74,8 @@ figure,
 figcaption,
 blockquote,
 dl,
-dd {
+dd,
+input {
   margin: 0;
   font-family: 'Martel Sans', sans-serif; }
 
